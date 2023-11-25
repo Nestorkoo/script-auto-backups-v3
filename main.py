@@ -30,7 +30,6 @@ def get_interval():
         get_minute = interval[0]
         count_minute = int(get_minute) * 60
         time.sleep(count_minute)
-
 def if_file_saves():
     try:
         while True:
@@ -49,6 +48,7 @@ def if_file_saves():
                 os.chdir(f'Backups {last_component} time - {current_time}')
                 shutil.copyfile(get_path, f'Backups {last_component} time - {current_time}')
                 os.chdir(get_path[2])
+            print(Fore.GREEN + f'Save {last_component} | time: {current_time}')
             get_interval()
     except KeyboardInterrupt:
         print('Script is stopped')
@@ -72,10 +72,11 @@ def if_dir_saves():
                 os.chdir(f'Backups {last_component} time - {current_time}')
                 shutil.copytree(get_path, f'Backups {last_component} time - {current_time}')
                 os.chdir(get_path[2])
+            print(Fore.GREEN + f'Save {last_component} | time: {current_time}')
             get_interval()
     except KeyboardInterrupt:
         print('Script is stopped')
-        
+
 if os.path.isfile(get_path):
     os.chdir(get_path[2])
     if_file_saves()
